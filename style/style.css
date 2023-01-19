@@ -10,17 +10,21 @@
     --bgcolor: #ffff00;
 } 
 body {
-    background: var(--bgcolor);
+    /* background: var(--bgcolor); */
 }
 
 main {
     width: 95%;
-    margin: 10px auto;
+    margin: 0 auto;
 }
 
 header {
     display: flex;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: white;
+    padding-top: 10px;
 }
 
 .logo {
@@ -30,12 +34,13 @@ header {
 }
 
 .nav-bar a {
-    padding: 30px;
+    padding: 10px 20px;
     font-size: 22px;
 }
 
 .nav-bar a:hover {
     color: red;
+    border-bottom: 2px solid red;
 }
 
 .search {
@@ -61,12 +66,19 @@ aside {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    position: sticky;
+    top: 150px;
 }
 
 .left-nav {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.left-nav a:hover {
+    color: red;
+    border-bottom: 2px solid red;
 }
 
 .content {
@@ -112,15 +124,48 @@ aside {
     border-radius: 50%;
 }
 
+
 #search:hover {
     width: 250px;
-    background-position: left;
+    background-position: 10px center;
     border-radius: 7px;
 }
+
+
 
 .fa-cart-shopping {
     font-size: 30px;
 }
 
+/* ----footer---- */
 
+footer {
+    position: relative;
+    top: 20px;
+    padding-bottom: 10px;
+}
+
+h3 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.contact-box {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.contact-box a {
+    padding: 15px;
+    border: 1px solid;
+    border-radius: 50px;
+    font-size: 20px;
+}
+
+.contact-box a:hover i {
+    transform: rotateX(360deg) scale(1.5);
+    color: red;
+    transition: .5s linear;
+}
 
