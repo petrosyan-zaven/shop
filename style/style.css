@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all .3s;
+    text-decoration: none;
+}
+
+:root {
+    --bgcolor: #ffff00;
+} 
+body {
+    background: var(--bgcolor);
+}
+
+main {
+    width: 95%;
+    margin: 10px auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav-bar a {
+    padding: 30px;
+    font-size: 22px;
+}
+
+.nav-bar a:hover {
+    color: red;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* -----shop----- */
+
+.shop {
+    display: flex;
+    margin-top: 40px;
+}
+
+.left-bar {
+    width: 25%;
+    height: 300px;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.left-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 25px;
+}
+
+.card {
+    width: 25%;
+}
+
+.item {
+    height: 400px;
+    background: #333;
+    border-radius: 10px;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover  .item{
+    flex: 2;
+    cursor: pointer;
+    z-index: 1;
+    transform: scale(1.1);
+    transition: 1s linear;
+    box-shadow: 10px 10px 25px ,
+    -10px -10px 25px ;
+}
+
+#search {
+    background: url('../photo/search-171.svg');
+    background-size: 20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#search:hover {
+    width: 250px;
+    background-position: left;
+    border-radius: 7px;
+}
+
+.fa-cart-shopping {
+    font-size: 30px;
+}
+
+
+
