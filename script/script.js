@@ -57,6 +57,10 @@ const left_bar = document.querySelector('.left-bar');
 const left_nav = document.querySelector('.left-nav');
 
 
+const genres = [];
+
+
+
 games.forEach(function (game) {
     const card = document.createElement('div');
     const item = document.createElement('div');
@@ -64,10 +68,11 @@ games.forEach(function (game) {
     const img = document.createElement('img');
     const title = document.createElement('p');
 
-    const genre = new WeakMap();
-    genre.set(game, genre );
 
-    console.log(genre);
+    if(!genres.includes(game.genre)) {
+        genres.push(game.genre)
+    }
+        
 
 
     img.classList.add('gameImg');
@@ -87,15 +92,13 @@ games.forEach(function (game) {
     function buyGame(event) {
 
         const i = event.target;
-        btn.classList.toggle('active');
 
-        if ( i.classList !== 'active' ) {
+        if ( !i.classList.contains('active')) {
+            i.classList.add('active')
             sum.textContent++;
-            console.log(i.classList, btn.classList);
         } else {
-            
+            i.classList.remove('active');
             sum.innerHTML--;
-            console.log(i.classList);
         }
     }
  
@@ -105,3 +108,14 @@ games.forEach(function (game) {
     content.appendChild(card);
 });
 
+genres.forEach(function(genre) {
+    const a = document.createElement('a');
+
+    a.href = ('#');
+    a.textContent = genre;
+    a.tytle = genre;
+    console.log(genre, a);
+
+    left_nav.appendChild(a);
+    left_bar.appendChild(left_nav);
+})
