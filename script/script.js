@@ -51,16 +51,35 @@ let games = [
 ];
 
 
+
 const content = document.querySelector('.content');
 const sum = document.querySelector('#sum');
 const left_bar = document.querySelector('.left-bar');
 const left_nav = document.querySelector('.left-nav');
+const nav_bar = document.querySelector('.nav-bar');
+const burger = document.querySelector('.burger');
+const basket = document.querySelector('#basket');
+const basketBox = document.querySelector('.basketBox');
 
+burger.addEventListener('click', addNav);
+basket.addEventListener('click', showBasket);
+
+document.addEventListener('DOMContentLoaded', loadFile)
 
 const genres = [];
+let basketArr = [];
 
 
+function loadFile() {
+    basketArr.push(JSON.parse(localStorage.getItem('game')));
+}
 
+///
+function addNav() {
+    nav_bar.classList.toggle('open');
+    burger.classList.toggle('close');
+}
+///
 games.forEach(function (game) {
     const card = document.createElement('div');
     const item = document.createElement('div');
@@ -92,14 +111,18 @@ games.forEach(function (game) {
     function buyGame(event) {
 
         const i = event.target;
+        let index = games.indexOf(game);
 
         if ( !i.classList.contains('active')) {
             i.classList.add('active')
             sum.textContent++;
+            basketArr.push(game);
         } else {
             i.classList.remove('active');
             sum.innerHTML--;
+            basketArr.splice(index, 1);
         }
+        localStorage.setItem('game', JSON.stringify(basketArr));
     }
  
 
@@ -114,8 +137,40 @@ genres.forEach(function(genre) {
     a.href = ('#');
     a.textContent = genre;
     a.tytle = genre;
-    console.log(genre, a);
 
     left_nav.appendChild(a);
     left_bar.appendChild(left_nav);
-})
+});
+
+
+function showBasket() {
+
+
+        basketArr.forEach(function(game) {
+            if(!basketBox.classList.contains('show')) {
+    
+                basketBox.classList.add('show');
+    
+                const card = document.createElement('div');
+                const item = document.createElement('div');
+                const img = document.createElement('img');
+                const title = document.createElement('p');
+    
+                img.classList.add('basketImg');
+                item.classList.add('basketItem');
+                card.classList.add('basketCard');
+                title.classList.add('basketTitle');
+        
+                img.src = game.img;
+                title.textContent =  `${game.name}   -  ${game.genre}  `;
+                
+                item.appendChild( img);
+                card.append(item, title);
+                basketBox.appendChild(card);
+        
+            } else {
+                basketBox.classList.remove('show');
+            }
+        }) 
+    }
+    
